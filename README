@@ -1,0 +1,7 @@
+1. 基于压力测试工具ab开发CDN压力测试脚本,可以设定不同场景数据
+2. 脚本可部署到任意路径，部署完根据操作系统不同使用对应的ab程序(如CentOS6.5系统,cp ab-6.5 ab),rerun.sh或testData.sh都可以启动脚本,rerun.sh删除之前测试中进程再启动testData.sh，适合前面测试没有完成需要重新启动测试
+3. 主程序myload.sh脚本负责压力测试以及数据收集，testData.sh可以设定具体测试场景以及执行次数，一次性执行所有场景用例
+4. 测试结果存储文件路径为【脚本路径】/resultDir/allTestResult.csv
+   每个用例场景执行的url list在文件【脚本路径】/urlDir/runUrlList.txt
+5. 脚本在CentOS5.8/6.5/7.3系统验证能正常运行，CentOS7.3系统使用ab-6.5可能会遇到错误：error while loading shared libraries: libaprutil-1.s   o.0: cannot open shared object file: No such file or director，安装yum -y  install  apr-util可以修复问题
+6. test_source.conf是基于nginx server设定的模拟源站，支持多条URL正则映射到一条资源
